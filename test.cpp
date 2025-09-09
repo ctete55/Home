@@ -27,10 +27,11 @@ int main(void)
             try
             {
                  throw brinquedoQuebrado();
+                  throw BrinquedoGood();
             }
-            catch(const char *e)
+            catch(const brinquedoQuebrado &e)
             {
-                std::cout<< "alguem chamou por: "<<e<< '\n';
+                std::cout<< "alguem chamou por: "<<e.what()<< '\n';
             }
             catch(const BrinquedoGood &e)
             {
