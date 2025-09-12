@@ -6,7 +6,7 @@
 /*   By: ctete <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:40:21 by ctete             #+#    #+#             */
-/*   Updated: 2025/09/09 11:30:43 by ctete            ###   ########.fr       */
+/*   Updated: 2025/09/09 12:05:19 by ctete            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,20 @@ class Bureaucrat{
 
 	
 	public:
-	  
-	  class is_higth : public std:: exception{ virtual const char *what()const throw() };
-	  class is_low: public std exception{ virtual const char *what()const throw() };
-
-	  Bureaucrat(std::string &name, int cout);
+	   Bureaucrat();
+	   Bureaucrat(std::string name, int cout);
 	  ~Bureaucrat();
+	  
+	  class is_higth : public std:: exception{ virtual const char *what()const throw(); };
+	  class is_low   : public std:: exception{ virtual const char *what()const throw(); };
+	  class is_good  : public std:: exception{ virtual const char *what()const throw(); };
 
 	  std::string getName()const;
-	  int getCout();
+	  int getCout()const;
 
 	  void incrementCout();
 	  void decrementCout();
 
 };
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &Bureaucrat);
+#endif

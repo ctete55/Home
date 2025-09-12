@@ -11,3 +11,50 @@
 /* ************************************************************************** */
 
 
+#include "Bureaucrat.hpp"
+
+const char *Bureaucrat::is_higth::what() const throw(){
+    return "numero muito grande o minimo e 1";
+}
+
+const char *Bureaucrat::is_low::what()const throw(){
+    return "numero muito baixo o minimo is 150";
+}
+
+const char *Bureaucrat::is_good::what() const throw(){
+    return "voce sera o proximo presidente";
+}
+
+
+
+Bureaucrat::Bureaucrat(){}
+
+Bureaucrat::Bureaucrat(const std::string name, int cout) : name(name){
+        if(cout < 1)
+            throw is_higth();
+        else if(cout > 150)
+            throw is_low();
+        else if(cout > 1 && cout < 150)
+            throw is_good();
+        cout = cout;
+}
+
+
+Bureaucrat::~Bureaucrat(){}
+
+std::string Bureaucrat::getName()const{ return name;}
+int Bureaucrat::getCout()const{ return cout;}
+
+
+void Bureaucrat::incrementCout(){
+    if(cout + 1 > 150)
+        throw is_low();
+    cout++;
+}
+
+void Bureaucrat::decrementCout(){
+    if(cout - 1 < 1)
+        throw is_higth();
+    cout--;
+}
+
