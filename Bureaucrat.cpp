@@ -13,11 +13,11 @@
 
 #include "Bureaucrat.hpp"
 
-const char *Bureaucrat::is_higth::what() const throw(){
+const char *Bureaucrat::GradeTooHighException ::what() const throw(){
     return "numero muito grande o minimo e 1";
 }
 
-const char *Bureaucrat::is_low::what()const throw(){
+const char *Bureaucrat::GradeTooLowException::what()const throw(){
     return "numero muito baixo o minimo is 150";
 }
 
@@ -31,9 +31,9 @@ Bureaucrat::Bureaucrat(){}
 
 Bureaucrat::Bureaucrat(const std::string name, int cout) : name(name){
         if(cout < 1)
-            throw is_higth();
+            throw GradeTooHighException ();
         else if(cout > 150)
-            throw is_low();
+            throw GradeTooLowException();
         else if(cout > 1 && cout < 150)
             throw is_good();
         cout = cout;
@@ -48,13 +48,18 @@ int Bureaucrat::getCout()const{ return cout;}
 
 void Bureaucrat::incrementCout(){
     if(cout + 1 > 150)
-        throw is_low();
+        throw GradeTooLowException();
     cout++;
 }
 
 void Bureaucrat::decrementCout(){
     if(cout - 1 < 1)
-        throw is_higth();
+        throw GradeTooHighException();
     cout--;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
+os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getCout() << ".";
+return os;
 }
 

@@ -23,15 +23,13 @@ class Bureaucrat{
 	  const std::string name;
 	  int cout;
 
-
-	
 	public:
 	   Bureaucrat();
 	   Bureaucrat(std::string name, int cout);
 	  ~Bureaucrat();
 	  
-	  class is_higth : public std:: exception{ virtual const char *what()const throw(); };
-	  class is_low   : public std:: exception{ virtual const char *what()const throw(); };
+	  class GradeTooHighException : public std:: exception{ virtual const char *what()const throw(); };
+	  class GradeTooLowException  : public std:: exception{ virtual const char *what()const throw(); };
 	  class is_good  : public std:: exception{ virtual const char *what()const throw(); };
 
 	  std::string getName()const;

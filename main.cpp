@@ -19,10 +19,10 @@ int main(){
          
             try
             {
-               Bureaucrat b("clementino", 178);
+                throw std::runtime_error("carapau da loja");
                
             }
-            catch(const std::exception& e)
+            catch(const std::exception &e)
             {
                 std::cerr << e.what() << '\n';
                 
